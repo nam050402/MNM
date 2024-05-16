@@ -4,7 +4,7 @@ import sys
 import pickle
 import time
 
-server = "192.168.0.112"
+server = "192.168.73.205"
 # "192.168.1.112"
 port = 8080
 current_player = 0

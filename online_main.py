@@ -217,6 +217,9 @@ def main():
             move_counter = 0
 
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 isClicking = True
                 mouse_pos = pygame.mouse.get_pos()
@@ -250,11 +253,8 @@ def main():
                             draw_button("Rematch", (150,150,150), rematch_rect)
                             print("Rematch button clicked")
                             data = ["Rematch", start[1]]
-            if event.type == pygame.MOUSEBUTTONUP:
-                isClicking = False
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+                if event.type == pygame.MOUSEBUTTONUP:
+                    isClicking = False
         draw_screen(img_empty, img_x, img_o, rect, board)
         draw_info_panel(screen,play_as,state)
         draw_button("Resign", (255,255,255), retreat_rect)
@@ -263,4 +263,4 @@ def main():
         n.send(data)
         pygame.display.update()
 
-main() 
+# main() 
