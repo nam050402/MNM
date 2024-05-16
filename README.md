@@ -9,9 +9,10 @@ Additional features will be available in the future!
 ## Author
 - [Dieter Walker](https://github.com/DieterWalker)
 - [Nam Blue](https://github.com/nam050402)
+- [Hoangf](https://github.com/nguyenviethoang2205)
 ## ScreenShot
 - Play Screen
-![Alternative text](./assets/readme_image/image_1.png)
+![Alternative text](./Assets/image.png)
 ## Dowloading project
 ```bash
 $ git clone https://github.com/nam050402/MNM
