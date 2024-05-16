@@ -22,8 +22,7 @@ img_o = pygame.image.load('Assets/caro_asset-03.png')
 img_o = pygame.transform.scale(img_o,(tile_size,tile_size))
 rect = img_empty.get_rect()
 retreat_rect = pygame.Rect(600, 140, 100, 50)
-draw_offer_rect = pygame.Rect(600, 200, 100, 50)
-rematch_rect = pygame.Rect(600, 260, 100, 50)
+rematch_rect = pygame.Rect(600, 200, 100, 50)
 
 def make_empty_board(sz):
     board = []
@@ -247,9 +246,6 @@ def main():
                             draw_button("Resign", (150,150,150), retreat_rect)
                             print("Resign button clicked")
                             data = ["Resign", start[1]]
-                        if draw_offer_rect.collidepoint(mouse_pos):
-                            draw_button("Draw", (150,150,150), draw_offer_rect)
-                            print("Draw button clicked")
                         if rematch_rect.collidepoint(mouse_pos) and game_over:
                             draw_button("Rematch", (150,150,150), rematch_rect)
                             print("Rematch button clicked")
@@ -262,7 +258,6 @@ def main():
         draw_screen(img_empty, img_x, img_o, rect, board)
         draw_info_panel(screen,play_as,state)
         draw_button("Resign", (255,255,255), retreat_rect)
-        draw_button("Draw", (255,255,255), draw_offer_rect)
         draw_button("Rematch", (255,255,255), rematch_rect)
 
         n.send(data)
