@@ -4,7 +4,7 @@ import sys
 import pickle
 import time
 
-server = "192.168.48.205"
+server = "172.20.10.5"
 # "192.168.1.112"
 port = 8081
 current_player = 0
@@ -30,6 +30,7 @@ for i in range(11):
 game_ready = [0,0]
 game_state = "ready to play"
 send_start = 0
+game_end_by_resign = False
 
 def threaded_client(conn, player):
     global current_player
@@ -38,6 +39,7 @@ def threaded_client(conn, player):
     global game_ready
     global send_start
     rematch_offer = False
+    global game_end_by_resign
     reply = []
     reply.append("Send client state")
     reply.append(player)
@@ -77,7 +79,7 @@ def threaded_client(conn, player):
                     reply.append(board)
                 elif game_state != "ready to play" and game_ready!= [1,1] and rematch_offer == False:
                     reply.append("you opponent has resign")
-                    reply.append(game_ready)
+                    reply.append(game_end_by_resign)
                 elif game_state != "ready to play" and game_ready!= [1,1] and rematch_offer:
                     reply.append("wait for opponent")
                     reply.append(game_ready)
@@ -99,6 +101,7 @@ def threaded_client(conn, player):
             elif data_recieve[0] == "Resign":
                 game_state = "not ready"
                 game_ready =[0,0]
+                game_end_by_resign = True
                 reply.append("you has resign")
                 reply.append(-1)
             elif data_recieve[0] == "Rematch":
@@ -109,6 +112,7 @@ def threaded_client(conn, player):
             elif data_recieve[0] == "game done":
                 game_state = "not ready"
                 game_ready =[0,0]
+                game_end_by_resign = False
                 reply.append("game done")
                 reply.append(-1)
 

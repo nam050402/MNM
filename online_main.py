@@ -178,12 +178,15 @@ def main():
         elif data_recieve[0] == "you have offer rematch":
             state = data_recieve[0]
         elif data_recieve[0] == "you opponent has resign":
-            game_over = True
-            move_counter = 0
-            if has_resign:
-                state = "you has resign"
+            if data_recieve[1] == True:
+                game_over = True
+                move_counter = 0
+                if has_resign:
+                    state = "you has resign"
+                else:
+                    state = data_recieve[0]
             else:
-                state = data_recieve[0]
+                a = "do nothing"
         elif data_recieve[0] == "start again":
             board = make_empty_board(11)
             game_over = False
