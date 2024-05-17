@@ -4,9 +4,9 @@ import sys
 import pickle
 import time
 
-server = "192.168.73.205"
+server = "192.168.48.205"
 # "192.168.1.112"
-port = 8080
+port = 8081
 current_player = 0
 
 s= socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -106,6 +106,12 @@ def threaded_client(conn, player):
                 game_ready[player -1] = 1
                 reply.append("you have offer rematch")
                 reply.append(-1)
+            elif data_recieve[0] == "game done":
+                game_state = "not ready"
+                game_ready =[0,0]
+                reply.append("game done")
+                reply.append(-1)
+
 
             conn.sendall(pickle.dumps(reply))
         except:

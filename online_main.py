@@ -206,11 +206,13 @@ def main():
                 move_counter = 0
                 print("player 1 win")
                 state = "X win"
+                data = ["game done", start[1]]
             elif is_win(board) == 2:
                 game_over = True
                 move_counter = 0
                 print("player 2 win")
                 state = "O win"
+                data = ["game done", start[1]]
         if move_counter >= 121 and game_over==False:
             game_over = True
             state = "draw"

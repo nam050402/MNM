@@ -3,9 +3,9 @@ import pickle
 class Network:
     def __init__(self):
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server = "192.168.73.205"
+        self.server = "192.168.48.205"
         # "192.168.1.112"
-        self.port = 8080
+        self.port = 8081
         self.addr = (self.server, self.port)
         self.client_state = self.connect()
         # print(self.client_state)
